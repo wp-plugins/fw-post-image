@@ -2,7 +2,7 @@
 /**
  * @package fw-post-image
  * @author Myriam Faulkner
- * @version 1.0
+ * @version 1.1
  */
 class fw_post_image {
     public $html;
@@ -25,9 +25,9 @@ $this->html = $html;
     if ($this->html == '') {
          $this->post_image_id = $this->get_post_image_id ();
          if ($this->post_image_id) {
-           do_action( 'begin_fetch_post_image_html', $this->post_id, $this->post_image_id, $this->size ); // for "Just In Time" filtering of all of wp_get_attachment_image()'s filters
+           do_action( 'begin_fetch_post_thumbnail_html', $this->post_id, $this->post_image_id, $this->size ); // for "Just In Time" filtering of all of wp_get_attachment_image()'s filters
 		$this->html = wp_get_attachment_image( $this->post_image_id, $this->size, false, $this->attr );
-		do_action( 'end_fetch_post_image_html', $this->post_id, $this->post_image_id, $this->size );
+		do_action( 'end_fetch_post_thumbnail_html', $this->post_id, $this->post_image_id, $this->size );
     
     } else {
         $this->html = $this->get_image_in_content ();
