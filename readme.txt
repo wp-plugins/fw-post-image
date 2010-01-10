@@ -3,7 +3,7 @@ Contributors: Fairweb (Myriam Faulkner)
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=10322212
 Tags: post image, image, photo, thumbnail
 Requires at least: 2.9
-Tested up to: 2.9
+Tested up to: 2.9.1
 Stable tag: '/trunk'
 
 Filters the_post_thumbnail() function. If no post thumbnail is defined, get the first image belonging to post or first image found in post content.
@@ -36,6 +36,8 @@ The image will be displayed according to the arguments (size and attributes) set
 1. This is an example for displaying post thumbnails on the index page of your theme.
 
 == Changelog ==
+= 1.2 =
+* Prevent error on getimagesize (line 92) when scanning post content for an image and finding an image which does not exist.
 = 1.1 =
 * Changed filter name for post_thumbnail_html (previously post_image_html)
 * Changed action name for begin_fetch_post_thumbnail_html(previously begin_fetch_post_image_html)

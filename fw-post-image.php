@@ -1,14 +1,14 @@
 <?php /**
  * @package fw-post-image
  * @author Myriam Faulkner
- * @version 1.1
+ * @version 1.2
  */
 /*
 Plugin Name: fw-post-image
-Plugin URI: http://www.fairweb.fr/plugins-wordpress/fw-post-image
+Plugin URI: http://www.fairweb.fr/en/plugins-wordpress/fw-post-image/
 Description: If no post image is defined, get first image belonging to post or first image found post content. WP 2.9 > only.
 Author: Myriam Faulkner
-Version: 1.1
+Version: 1.2
 Author URI: http://www.fairweb.fr/
 */
 
@@ -25,8 +25,6 @@ Author URI: http://www.fairweb.fr/
     GNU General Public License for more details.
  */
 require_once(WP_PLUGIN_DIR .'/fw-post-image/fw-post-image.class.php');
-
     $fw_pimg = new fw_post_image();
     add_filter( 'post_thumbnail_html', array(&$fw_pimg, 'get_post_image'),1,5 );
-
 ?>

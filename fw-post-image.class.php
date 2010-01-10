@@ -2,7 +2,7 @@
 /**
  * @package fw-post-image
  * @author Myriam Faulkner
- * @version 1.1
+ * @version 1.2
  */
 class fw_post_image {
     public $html;
@@ -60,15 +60,23 @@ public function get_post_image_id () {
         }
 }
 
+public function remote_file_exists($image) {
+    if ( @file($image)) {
+        return true;
+    }
+    return false;
+}
+
 public function get_image_in_content () {
 
 	$my_post = get_post($this->post_id);
 
 	preg_match_all( '|<img.*?src=[\'"](.*?)[\'"].*?>|i', $my_post->post_content, $matches );
 
-	if ( isset( $matches ) ) $image = $matches[1][0];
+	if ( isset( $matches ) ) {
+            $image = $matches[1][0];
 
-	if ( $matches[1][0] ) {
+	if ( $matches[1][0] && $this->remote_file_exists($image) ) {
 
             // determine alt attribute
             $altpattern = '/alt=([\'"])?(.*?)\\1/';
@@ -97,7 +105,8 @@ public function get_image_in_content () {
 		
                 return $this->html;
         }
-	else {
+
+        } else {
 		return NULL;
         }
 }
